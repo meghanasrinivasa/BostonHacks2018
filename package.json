@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/harshit-raj/BostonHacks2018/issues"
   },
-  "homepage": "https://github.com/harshit-raj/BostonHacks2018#readme"
+  "homepage": "https://github.com/harshit-raj/BostonHacks2018#readme",
+  "dependencies": {
+    "aws-sdk": "^2.353.0",
+    "spotify-web-api-node": "^4.0.0",
+    "twilio": "^3.23.2"
+  }
 }
