@@ -63,7 +63,7 @@ functions:
           path: hello/test
           method: get
   smsreceived:
-    handler: handler.smsreceived
+    handler: smshandler.smsreceived
     events:
       - http:
           path: smsreceived
