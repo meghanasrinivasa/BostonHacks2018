@@ -1,0 +1,19 @@
+{
+  "name": "bostonhacks2018",
+  "version": "1.0.0",
+  "description": "Democratic Radio",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshit-raj/BostonHacks2018.git"
+  },
+  "author": "Harshit Raj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harshit-raj/BostonHacks2018/issues"
+  },
+  "homepage": "https://github.com/harshit-raj/BostonHacks2018#readme"
+}
