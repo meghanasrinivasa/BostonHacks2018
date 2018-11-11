@@ -1,13 +1,21 @@
 'use strict';
-
+const qs = require('querystring');
 module.exports.sms = async (event, context) => {
 
-    console.log("body : " + JSON.parse(event.body.Body))
+    console.log("body : " + event.body);
+
+    let q = qs.parse(event.body);
+    console.log(q.Body);
+    console.log(q.From);
+
+
+    
+    
     return {
     statusCode: 200,
     body: JSON.stringify({
-      message: '',
-      input: event,
+      message: q,
+      input: event
     }),
   };
 
