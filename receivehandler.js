@@ -1,22 +1,21 @@
-'use strict';
-const qs = require('querystring');
+"use strict";
+const qs = require("querystring");
+const soptifyAPI = require("spotify-web-api-node");
+const spotify = new soptifyAPI();
+
 module.exports.sms = async (event, context) => {
+  console.log("body : " + event.body);
 
-    console.log("body : " + event.body);
+  let q = qs.parse(event.body);
+  console.log(q.Body);
+  console.log(q.From);
 
-    let q = qs.parse(event.body);
-    console.log(q.Body);
-    console.log(q.From);
-
-
-    
-    
-    return {
+  return {
     statusCode: 200,
     body: JSON.stringify({
       message: q,
       input: event
-    }),
+    })
   };
 
   // Use this code if you don't use the http event with the LAMBDA-PROXY integration
