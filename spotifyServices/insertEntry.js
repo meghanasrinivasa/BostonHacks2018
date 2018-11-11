@@ -9,6 +9,7 @@ module.exports = {
         var params = {
             TableName: tokenTable,
             Item:{
+                "tokenKey": "banana",
                 "tokenId" : token
             }
         }
@@ -26,7 +27,15 @@ module.exports = {
 
     },
     getToken: function(){
-        
+        console.log("Getting the token ");
+        var params = {
+            TableName: tokenTable,
+            Key:{
+                "tokenKey": 'banana'
+                //"tokenId":'BQDkUvX6twoe719tLdITubrMDQBLds8QaTX6pxuRuNdtgMQK1XUZeA8Up7pxMlb0ZeqpRe2bOr_OYqqHDi4"
+            }
+        };
+        return documentClient["get"](params).promise();
     }
 }
 
