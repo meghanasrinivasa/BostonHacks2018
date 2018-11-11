@@ -20,7 +20,18 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-  environment: ${file(./env.yml)}  
+  environment: ${file(./env.yml)}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+        # - dynamodb:Query
+        # - dynamodb:Scan
+        # - dynamodb:GetItem
+        # - dynamodb:PutItem
+        # - dynamodb:UpdateItem
+        # - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-east-1:*:*"
 
 # you can overwrite defaults here
 #  stage: dev
@@ -68,6 +79,13 @@ functions:
       - http:
           path: test
           method: get
+
+  getToken:
+    handler: token.handler
+    events: # All events associated with this function
+      - http:
+          path: getToken
+          method: get
   smsreceived:
     handler: smshandler.smsreceived
     events:
@@ -81,6 +99,12 @@ functions:
           path: sms
           method: post
 
+  testFunc:
+    handler: saveToken.hello
+    events:
+      - http:
+          path: testFunc
+          method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
