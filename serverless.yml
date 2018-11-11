@@ -20,7 +20,7 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-  environment: ${file(./env.yml)}  
+  environment: ${file(./env.yml)}
 
 # you can overwrite defaults here
 #  stage: dev
@@ -67,6 +67,13 @@ functions:
     events: # All events associated with this function
       - http:
           path: test
+          method: get
+
+  getToken:
+    handler: token.handler
+    events: # All events associated with this function
+      - http:
+          path: getToken
           method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
