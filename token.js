@@ -3,6 +3,7 @@ const util = require("util");
 const fetch = require("node-fetch");
 const client_id = process.env.spoitfyCID; // Your client id
 const client_secret = process.env.spotifyCSecret; // Your secret
+const insertToken = require('./spotifyServices/insertEntry');
 
 exports.handler = (event, context, callback) => {
   // done is called in order to send information back to the client
@@ -20,6 +21,8 @@ exports.handler = (event, context, callback) => {
         }
       });
     } else {
+      insertToken.insertToken(res.json.access_token);
+
       callback(null, {
         statusCode: 200,
         body: JSON.stringify({
