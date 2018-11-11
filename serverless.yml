@@ -20,7 +20,7 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-    
+  environment: ${file(./env.yml)}  
 
 # you can overwrite defaults here
 #  stage: dev
@@ -61,6 +61,12 @@ functions:
     events: # All events associated with this function
       - http:
           path: hello/test
+          method: get
+  test:
+    handler: test.hello
+    events: # All events associated with this function
+      - http:
+          path: test
           method: get
   smsreceived:
     handler: smshandler.smsreceived
